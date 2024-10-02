@@ -31,6 +31,11 @@ public class GreetingControllerTest {
 				.andExpect(status().isForbidden());
 	}
 	
+	@Test
+	public void badCredentials() throws Exception {
+		mvc.perform(MockMvcRequestBuilders.get("/greeting").header("x-api-key", "X").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isForbidden());
+	}	
 	
 
 }
